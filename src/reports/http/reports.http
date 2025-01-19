@@ -1,1 +1,13 @@
 GET http://localhost:3000/reports
+
+### Get Report
+GET http://localhost:3000/reports/6782fc5282f4cdc3a130b55d17
+
+### create report
+POST http://localhost:3000/reports
+Content-Type: application/json
+
+{
+    "name": "Analize Report 1",
+    "description": "Not good"
+}

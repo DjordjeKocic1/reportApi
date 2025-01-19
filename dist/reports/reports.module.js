@@ -10,11 +10,14 @@ exports.ReportsModule = void 0;
 const common_1 = require("@nestjs/common");
 const reports_controller_1 = require("./reports.controller");
 const reports_service_1 = require("./reports.service");
+const mongoose_1 = require("@nestjs/mongoose");
+const reports_schema_1 = require("./reports.schema");
 let ReportsModule = class ReportsModule {
 };
 exports.ReportsModule = ReportsModule;
 exports.ReportsModule = ReportsModule = __decorate([
     (0, common_1.Module)({
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: reports_schema_1.Report.name, schema: reports_schema_1.ReportsSchema }])],
         controllers: [reports_controller_1.ReportsController],
         providers: [reports_service_1.ReportsService],
     })
