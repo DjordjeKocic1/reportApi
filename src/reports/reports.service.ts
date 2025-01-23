@@ -16,8 +16,8 @@ export class ReportsService {
     return report;
   }
 
-  async create(payload: any) {
-    const report = new this.reports(payload);
+  async create(reportPayload: Report) {
+    const report = new this.reports(reportPayload);
     await report.save();
     return report;
   }

@@ -13,7 +13,7 @@ export declare class ReportsService {
     } & {
         __v: number;
     }>;
-    create(payload: any): Promise<import("mongoose").Document<unknown, {}, Report> & Report & {
+    create(reportPayload: Report): Promise<import("mongoose").Document<unknown, {}, Report> & Report & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;

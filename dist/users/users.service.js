@@ -12,33 +12,33 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReportsService = void 0;
-const common_1 = require("@nestjs/common");
+exports.UserService = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const users_schema_1 = require("./users.schema");
 const mongoose_2 = require("mongoose");
-const reports_schema_1 = require("./reports.schema");
-let ReportsService = class ReportsService {
-    constructor(reports) {
-        this.reports = reports;
-    }
-    async findAll() {
-        const reports = await this.reports.find();
-        return reports;
+const common_1 = require("@nestjs/common");
+let UserService = class UserService {
+    constructor(users) {
+        this.users = users;
     }
     async findOne(id) {
-        const report = await this.reports.findById({ _id: id });
-        return report;
+        const user = await this.users.findOne({ _id: id });
+        return user;
     }
-    async create(reportPayload) {
-        const report = new this.reports(reportPayload);
-        await report.save();
-        return report;
+    async signIn(user) {
+        const userCreated = new this.users(user);
+        await userCreated.save();
+        return userCreated;
+    }
+    async update(id, user) {
+        const userUpdated = await this.users.findOneAndUpdate({ _id: id }, user, { new: true });
+        return userUpdated;
     }
 };
-exports.ReportsService = ReportsService;
-exports.ReportsService = ReportsService = __decorate([
+exports.UserService = UserService;
+exports.UserService = UserService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(reports_schema_1.Report.name)),
+    __param(0, (0, mongoose_1.InjectModel)(users_schema_1.User.name)),
     __metadata("design:paramtypes", [mongoose_2.Model])
-], ReportsService);
-//# sourceMappingURL=reports.service.js.map
+], UserService);
+//# sourceMappingURL=users.service.js.map

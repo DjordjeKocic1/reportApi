@@ -1,0 +1,19 @@
+### get user
+GET http://localhost:3000/users/678e491fb0f2ef47ad041a96
+
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "DjoleKole",
+    "password": "djole1989/"
+}
+
+### update
+PUT http://localhost:3000/users/678e491fb0f2ef47ad041a96
+Content-Type: application/json
+
+{
+    "age": "32"
+}
