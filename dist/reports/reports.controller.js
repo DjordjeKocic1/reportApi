@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const reports_service_1 = require("./reports.service");
 const serialize_interceptor_1 = require("../interceptors/serialize.interceptor");
 const reports_schema_1 = require("./reports.schema");
+const report_dto_1 = require("./dtos/report.dto");
 let ReportsController = class ReportsController {
     constructor(reportsService) {
         this.reportsService = reportsService;
@@ -39,7 +40,6 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ReportsController.prototype, "getReports", null);
 __decorate([
-    (0, common_1.UseInterceptors)(serialize_interceptor_1.SerializeInterceptor),
     (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -47,7 +47,6 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ReportsController.prototype, "getReport", null);
 __decorate([
-    (0, common_1.UseInterceptors)(serialize_interceptor_1.SerializeInterceptor),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -56,6 +55,7 @@ __decorate([
 ], ReportsController.prototype, "createReport", null);
 exports.ReportsController = ReportsController = __decorate([
     (0, common_1.Controller)('reports'),
+    (0, serialize_interceptor_1.Serialize)(report_dto_1.ReportDto),
     __metadata("design:paramtypes", [reports_service_1.ReportsService])
 ], ReportsController);
 //# sourceMappingURL=reports.controller.js.map

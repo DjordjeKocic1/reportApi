@@ -21,12 +21,12 @@ let UserService = class UserService {
     constructor(users) {
         this.users = users;
     }
-    async findOne(id) {
-        const user = await this.users.findOne({ _id: id });
+    async findOne(username) {
+        const user = await this.users.findOne({ username });
         return user;
     }
-    async signIn(user) {
-        const userCreated = new this.users(user);
+    async create(username, password) {
+        const userCreated = new this.users({ username, password });
         await userCreated.save();
         return userCreated;
     }

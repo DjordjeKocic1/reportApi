@@ -16,15 +16,22 @@ exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
 const users_schema_1 = require("./users.schema");
+const users_dto_1 = require("./dtos/users.dto");
+const auth_service_1 = require("./auth.service");
+const serialize_interceptor_1 = require("../interceptors/serialize.interceptor");
 let UsersController = class UsersController {
-    constructor(userService) {
+    constructor(userService, authService) {
         this.userService = userService;
+        this.authService = authService;
     }
     getUser(id) {
         return this.userService.findOne(id);
     }
-    createUser(user) {
-        return this.userService.signIn(user);
+    createUser(body) {
+        return this.authService.signUp(body.username, body.password);
+    }
+    signIn(body) {
+        return this.authService.signIn(body.username, body.password);
     }
     updateUser(id, user) {
         return this.userService.update(id, user);
@@ -39,12 +46,19 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getUser", null);
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('/signup'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [users_schema_1.User]),
+    __metadata("design:paramtypes", [users_dto_1.UserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUser", null);
+__decorate([
+    (0, common_1.Post)("/signin"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [users_dto_1.UserDto]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "signIn", null);
 __decorate([
     (0, common_1.Put)("/:id"),
     __param(0, (0, common_1.Param)("id")),
@@ -55,6 +69,7 @@ __decorate([
 ], UsersController.prototype, "updateUser", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('users'),
-    __metadata("design:paramtypes", [users_service_1.UserService])
+    (0, serialize_interceptor_1.Serialize)(users_dto_1.UserDto),
+    __metadata("design:paramtypes", [users_service_1.UserService, auth_service_1.AuthService])
 ], UsersController);
 //# sourceMappingURL=users.controller.js.map

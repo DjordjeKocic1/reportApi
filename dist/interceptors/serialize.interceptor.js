@@ -1,13 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SerializeInterceptor = void 0;
+exports.SerializeInterceptor = exports.Serialize = void 0;
+const common_1 = require("@nestjs/common");
 const class_transformer_1 = require("class-transformer");
 const operators_1 = require("rxjs/operators");
-const report_dto_1 = require("../reports/dtos/report.dto");
+const Serialize = (dto) => (0, common_1.UseInterceptors)(new SerializeInterceptor(dto));
+exports.Serialize = Serialize;
 class SerializeInterceptor {
+    constructor(dto) {
+        this.dto = dto;
+    }
     intercept(context, next) {
         return next.handle().pipe((0, operators_1.map)((data) => {
-            return (0, class_transformer_1.plainToClass)(report_dto_1.ReportDto, data, { excludeExtraneousValues: true });
+            return (0, class_transformer_1.plainToInstance)(this.dto, data, { excludeExtraneousValues: true });
         }));
     }
 }

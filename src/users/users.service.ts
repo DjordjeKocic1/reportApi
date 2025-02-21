@@ -7,13 +7,13 @@ import { Injectable } from "@nestjs/common";
 export class UserService {
     constructor(@InjectModel(User.name) private users: Model<User>) {}
 
-    async findOne(id: string) {
-        const user = await this.users.findOne({ _id: id });
+    async findOne(username: string) {
+        const user = await this.users.findOne({ username });
         return user;
     }
 
-    async signIn(user: User) {
-        const userCreated = new this.users(user);
+    async create(username: string, password: string) {        
+        const userCreated = new this.users({ username, password });
         await userCreated.save();
         return userCreated;
     }
