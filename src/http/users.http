@@ -1,28 +1,14 @@
 ### get user
-GET http://localhost:3000/users/678e491fb0f2ef47ad041a96
+GET http://localhost:3000/users/DjoleKole
 
-### signup
-POST http://localhost:3000/users/signup
-Content-Type: application/json
 
-{
-    "username": "Krista",
-    "password": "djole1989/"
-}
-
-### signin
-POST http://localhost:3000/users/signin
-Content-Type: application/json
-
-{
-    "username": "Krista",
-    "password": "djole1989"
-}
+###whoami
+GET http://localhost:3000/users/whoami/DjoleKole
 
 ### update
 PUT http://localhost:3000/users/678e491fb0f2ef47ad041a96
 Content-Type: application/json
 
 {
-    "age": "32"
+    "age": "111"
 }
