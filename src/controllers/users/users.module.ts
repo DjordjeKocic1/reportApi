@@ -4,9 +4,8 @@ import { User, UsersSchema } from "./users.schema";
 import { UsersController } from "./users.controller";
 import { UserService } from "./users.service";
 import { AuthService } from "../auth/auth.service";
-import { CurrentUserInterceptor } from "./interceptors/current-user.interceptor";
-import { APP_GUARD, APP_INTERCEPTOR } from "@nestjs/core";
 import { AuthGuard } from "src/guards/auth.guard";
+import { CurrentUserInterceptor } from "./interceptors/current-user.interceptor";
 
 @Module({
   imports: [
@@ -17,7 +16,7 @@ import { AuthGuard } from "src/guards/auth.guard";
     UserService,
     AuthService,
     AuthGuard,
-    { provide: APP_INTERCEPTOR, useClass: CurrentUserInterceptor },
+    CurrentUserInterceptor
   ],
 })
 export class UsersModule {}

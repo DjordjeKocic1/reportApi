@@ -21,16 +21,14 @@ const auth_service_1 = require("../auth/auth.service");
 const serialize_interceptor_1 = require("../../interceptors/serialize.interceptor");
 const current_user_decorator_1 = require("./decorators/current-user.decorator");
 const auth_guard_1 = require("../../guards/auth.guard");
+const current_user_interceptor_1 = require("./interceptors/current-user.interceptor");
 let UsersController = class UsersController {
     constructor(userService, authService) {
         this.userService = userService;
         this.authService = authService;
     }
-    whoami(user) {
-        return user;
-    }
-    getUser(username) {
-        return this.userService.findOne(username);
+    getUser(current) {
+        return current;
     }
     updateUser(id, user) {
         return this.userService.update(id, user);
@@ -38,17 +36,10 @@ let UsersController = class UsersController {
 };
 exports.UsersController = UsersController;
 __decorate([
-    (0, common_1.Get)("/whoami/:username"),
+    (0, common_1.Get)("/"),
     __param(0, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [users_schema_1.User]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "whoami", null);
-__decorate([
-    (0, common_1.Get)("/:username"),
-    __param(0, (0, common_1.Param)("username")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getUser", null);
 __decorate([
@@ -63,6 +54,7 @@ exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('users'),
     (0, serialize_interceptor_1.Serialize)(users_dto_1.UserDto),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.UseInterceptors)(current_user_interceptor_1.CurrentUserInterceptor),
     __metadata("design:paramtypes", [users_service_1.UserService, auth_service_1.AuthService])
 ], UsersController);
 //# sourceMappingURL=users.controller.js.map

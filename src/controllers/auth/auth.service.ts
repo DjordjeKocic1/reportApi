@@ -11,7 +11,7 @@ const scrypt = promisify(_scrypt);
 export class AuthService {
     constructor(private userService: UserService,private jwtService: JwtService) {}
 
-    async signIn(username: string, password: string):Promise<{ access_token: string }> {
+    async signIn(username: string, password: string) {
         const user = await this.userService.findOne(username);
         if(!user) {
             throw new NotFoundException(ErrorMessages.USER_NOT_FOUND);
@@ -29,6 +29,8 @@ export class AuthService {
         }
 
         const access_token = await this.jwtService.signAsync(payload);
+
+        const d = await this.jwtService.decode(access_token);
 
         return { access_token };
     }

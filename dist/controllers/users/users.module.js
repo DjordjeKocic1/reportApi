@@ -13,9 +13,8 @@ const users_schema_1 = require("./users.schema");
 const users_controller_1 = require("./users.controller");
 const users_service_1 = require("./users.service");
 const auth_service_1 = require("../auth/auth.service");
-const current_user_interceptor_1 = require("./interceptors/current-user.interceptor");
-const core_1 = require("@nestjs/core");
 const auth_guard_1 = require("../../guards/auth.guard");
+const current_user_interceptor_1 = require("./interceptors/current-user.interceptor");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
@@ -29,7 +28,7 @@ exports.UsersModule = UsersModule = __decorate([
             users_service_1.UserService,
             auth_service_1.AuthService,
             auth_guard_1.AuthGuard,
-            { provide: core_1.APP_INTERCEPTOR, useClass: current_user_interceptor_1.CurrentUserInterceptor },
+            current_user_interceptor_1.CurrentUserInterceptor
         ],
     })
 ], UsersModule);

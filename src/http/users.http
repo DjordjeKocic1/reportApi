@@ -1,14 +1,12 @@
 ### get user
-GET http://localhost:3000/users/DjoleKole
-
-
-###whoami
-GET http://localhost:3000/users/whoami/DjoleKole
+GET http://localhost:3000/users/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IktyaXN0YSIsImlhdCI6MTc0MjA4NDg5MiwiZXhwIjoxNzQyMTIwODkyfQ.-6lCc9qAPZ9VAJbc49eMD456eyfGYfRgsAyUUuBaTrg
 
 ### update
 PUT http://localhost:3000/users/678e491fb0f2ef47ad041a96
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IktyaXN0YSIsImlhdCI6MTc0MTg3Mjg4OCwiZXhwIjoxNzQxODcyOTQ4fQ.oU7oxjjWeVB79wz-GGVt38JNd79hcHcFhcLpU2S0uZg
 
 {
-    "age": "111"
+    "age": "222"
 }

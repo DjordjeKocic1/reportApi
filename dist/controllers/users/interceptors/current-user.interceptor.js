@@ -12,23 +12,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CurrentUserInterceptor = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("../users.service");
+const jwt_1 = require("@nestjs/jwt");
 let CurrentUserInterceptor = class CurrentUserInterceptor {
-    constructor(userService) {
+    constructor(userService, jwtService) {
         this.userService = userService;
+        this.jwtService = jwtService;
     }
     async intercept(context, next) {
         const request = context.switchToHttp().getRequest();
-        const { username } = request.params;
-        if (username) {
-            const user = await this.userService.findOne(username);
+        const token = this.extractTokenFromHeader(request);
+        const decode = await this.jwtService.decode(token);
+        const user = await this.userService.findOne(decode.username);
+        if (user) {
             request.currentUser = user;
         }
         return next.handle();
+    }
+    extractTokenFromHeader(request) {
+        const authHeader = request.headers['authorization'];
+        if (!authHeader)
+            return undefined;
+        const [type, token] = authHeader.split(' ');
+        return type === 'Bearer' ? token : undefined;
     }
 };
 exports.CurrentUserInterceptor = CurrentUserInterceptor;
 exports.CurrentUserInterceptor = CurrentUserInterceptor = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [users_service_1.UserService])
+    __metadata("design:paramtypes", [users_service_1.UserService, jwt_1.JwtService])
 ], CurrentUserInterceptor);
 //# sourceMappingURL=current-user.interceptor.js.map

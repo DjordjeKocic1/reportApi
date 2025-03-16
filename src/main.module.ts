@@ -14,7 +14,7 @@ import { AuthModule } from "./controllers/auth/auth.module";
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: "60s" },
+      signOptions: { expiresIn: "10h" },
     }),
     ReportsModule,
     UsersModule,

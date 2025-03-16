@@ -5,12 +5,7 @@ export declare class UsersController {
     userService: UserService;
     authService: AuthService;
     constructor(userService: UserService, authService: AuthService);
-    whoami(user: User): User;
-    getUser(username: string): Promise<import("mongoose").Document<unknown, {}, User> & User & {
-        _id: import("mongoose").Types.ObjectId;
-    } & {
-        __v: number;
-    }>;
+    getUser(current: any): any;
     updateUser(id: string, user: User): Promise<import("mongoose").Document<unknown, {}, User> & User & {
         _id: import("mongoose").Types.ObjectId;
     } & {
