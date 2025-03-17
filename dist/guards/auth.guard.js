@@ -13,13 +13,14 @@ exports.AuthGuard = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const auth_1 = require("../constants/auth");
+const auth_utils_1 = require("./utils/auth.utils");
 let AuthGuard = class AuthGuard {
     constructor(jwtService) {
         this.jwtService = jwtService;
     }
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
-        const token = this.extractTokenFromHeader(request);
+        const token = (0, auth_utils_1.extractTokenFromHeader)(request);
         if (!token) {
             throw new common_1.UnauthorizedException("Token not found");
         }
@@ -32,13 +33,6 @@ let AuthGuard = class AuthGuard {
             throw new common_1.UnauthorizedException("Invalid token");
         }
         return true;
-    }
-    extractTokenFromHeader(request) {
-        const authHeader = request.headers['authorization'];
-        if (!authHeader)
-            return undefined;
-        const [type, token] = authHeader.split(' ');
-        return type === 'Bearer' ? token : undefined;
     }
 };
 exports.AuthGuard = AuthGuard;

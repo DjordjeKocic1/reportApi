@@ -13,6 +13,7 @@ exports.CurrentUserInterceptor = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("../users.service");
 const jwt_1 = require("@nestjs/jwt");
+const auth_utils_1 = require("../../../guards/utils/auth.utils");
 let CurrentUserInterceptor = class CurrentUserInterceptor {
     constructor(userService, jwtService) {
         this.userService = userService;
@@ -20,20 +21,13 @@ let CurrentUserInterceptor = class CurrentUserInterceptor {
     }
     async intercept(context, next) {
         const request = context.switchToHttp().getRequest();
-        const token = this.extractTokenFromHeader(request);
-        const decode = await this.jwtService.decode(token);
+        const token = (0, auth_utils_1.extractTokenFromHeader)(request);
+        const decode = this.jwtService.decode(token);
         const user = await this.userService.findOne(decode.username);
         if (user) {
             request.currentUser = user;
         }
         return next.handle();
-    }
-    extractTokenFromHeader(request) {
-        const authHeader = request.headers['authorization'];
-        if (!authHeader)
-            return undefined;
-        const [type, token] = authHeader.split(' ');
-        return type === 'Bearer' ? token : undefined;
     }
 };
 exports.CurrentUserInterceptor = CurrentUserInterceptor;

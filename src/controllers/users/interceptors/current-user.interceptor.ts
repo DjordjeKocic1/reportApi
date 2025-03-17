@@ -6,6 +6,7 @@ import {
 } from "@nestjs/common";
 import { UserService } from "../users.service";
 import { JwtService } from "@nestjs/jwt";
+import { extractTokenFromHeader } from "src/guards/utils/auth.utils";
 
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {
@@ -13,24 +14,14 @@ export class CurrentUserInterceptor implements NestInterceptor {
 
   async intercept(context: ExecutionContext, next: CallHandler) {
     const request = context.switchToHttp().getRequest();
-    const token = this.extractTokenFromHeader(request);
-    const decode = await this.jwtService.decode(token);
+    const token = extractTokenFromHeader(request);
+    const decode = this.jwtService.decode(token);
     const user = await this.userService.findOne(decode.username);
 
     if(user) {
       request.currentUser = user;
     }
 
-
     return next.handle()
-  }
-
-  private extractTokenFromHeader(request: Request): string | undefined {
-    const authHeader = request.headers['authorization'];
-
-    if (!authHeader) return undefined;
-    
-    const [type, token] = authHeader.split(' ');
-    return type === 'Bearer' ? token : undefined;
   }
 }

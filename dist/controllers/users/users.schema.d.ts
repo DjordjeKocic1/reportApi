@@ -2,7 +2,7 @@ export declare class User {
     username: string;
     password: string;
     age: string;
-    city: string;
+    mobile: number;
 }
 export declare const UsersSchema: import("mongoose").Schema<User, import("mongoose").Model<User, any, any, any, import("mongoose").Document<unknown, any, User> & User & {
     _id: import("mongoose").Types.ObjectId;

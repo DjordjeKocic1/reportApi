@@ -27,9 +27,9 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "age", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], User.prototype, "city", void 0);
+    (0, mongoose_1.Prop)({ type: Number }),
+    __metadata("design:type", Number)
+], User.prototype, "mobile", void 0);
 exports.User = User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);

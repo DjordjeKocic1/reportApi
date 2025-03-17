@@ -11,8 +11,8 @@ export class User {
   @Prop()
   age: string;
 
-  @Prop()
-  city: string;
+  @Prop({ type: Number })
+  mobile: number;
 }
 
 export const UsersSchema = SchemaFactory.createForClass(User);

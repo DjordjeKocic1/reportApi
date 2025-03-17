@@ -11,6 +11,9 @@ export class UserDto {
     age: number;
 
     @Expose()
+    mobile: number;
+
+    @Expose()
     access_token: string;
     
     password: string;

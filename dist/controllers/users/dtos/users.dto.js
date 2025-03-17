@@ -28,6 +28,10 @@ __decorate([
 ], UserDto.prototype, "age", void 0);
 __decorate([
     (0, class_transformer_1.Expose)(),
+    __metadata("design:type", Number)
+], UserDto.prototype, "mobile", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)(),
     __metadata("design:type", String)
 ], UserDto.prototype, "access_token", void 0);
 //# sourceMappingURL=users.dto.js.map
