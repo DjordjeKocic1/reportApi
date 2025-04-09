@@ -18,6 +18,7 @@ const reports_service_1 = require("./reports.service");
 const serialize_interceptor_1 = require("../../interceptors/serialize.interceptor");
 const reports_schema_1 = require("./reports.schema");
 const report_dto_1 = require("./dtos/report.dto");
+const auth_guard_1 = require("../../guards/auth.guard");
 let ReportsController = class ReportsController {
     constructor(reportsService) {
         this.reportsService = reportsService;
@@ -56,6 +57,7 @@ __decorate([
 exports.ReportsController = ReportsController = __decorate([
     (0, common_1.Controller)('reports'),
     (0, serialize_interceptor_1.Serialize)(report_dto_1.ReportDto),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     __metadata("design:paramtypes", [reports_service_1.ReportsService])
 ], ReportsController);
 //# sourceMappingURL=reports.controller.js.map

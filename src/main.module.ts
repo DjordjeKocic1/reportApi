@@ -5,12 +5,21 @@ import { jwtConstants } from "./constants/auth";
 import { ReportsModule } from "./controllers/reports/reports.module";
 import { UsersModule } from "./controllers/users/users.module";
 import { AuthModule } from "./controllers/auth/auth.module";
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      "mongodb+srv://djordjereports:djole1989@reports.p6ovw.mongodb.net/?retryWrites=true&w=majority&appName=Reports"
-    ),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    MongooseModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGO_URI'),
+      })
+    }),
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
