@@ -19,7 +19,7 @@ const users_schema_1 = require("./users.schema");
 const users_dto_1 = require("./dtos/users.dto");
 const auth_service_1 = require("../auth/auth.service");
 const serialize_interceptor_1 = require("../../interceptors/serialize.interceptor");
-const auth_guard_1 = require("../../guards/auth.guard");
+const token_guard_1 = require("../../guards/token.guard");
 let UsersController = class UsersController {
     constructor(userService, authService) {
         this.userService = userService;
@@ -41,7 +41,7 @@ __decorate([
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('users'),
     (0, serialize_interceptor_1.Serialize)(users_dto_1.UserDto),
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.UseGuards)(token_guard_1.TokenGuard),
     __metadata("design:paramtypes", [users_service_1.UserService, auth_service_1.AuthService])
 ], UsersController);
 //# sourceMappingURL=users.controller.js.map

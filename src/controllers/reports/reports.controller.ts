@@ -3,11 +3,11 @@ import { ReportsService } from "./reports.service";
 import { Serialize } from "src/interceptors/serialize.interceptor";
 import { Report } from "./reports.schema";
 import { ReportDto } from "./dtos/report.dto";
-import { AuthGuard } from "src/guards/auth.guard";
+import { TokenGuard } from "src/guards/token.guard";
 
 @Controller('reports')
 @Serialize(ReportDto)
-@UseGuards(AuthGuard)
+@UseGuards(TokenGuard)
 export class ReportsController {
     constructor(public reportsService: ReportsService) {}
     @Get()

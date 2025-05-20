@@ -4,11 +4,11 @@ import { User } from "./users.schema";
 import { UserDto } from "./dtos/users.dto";
 import { AuthService } from "../auth/auth.service";
 import { Serialize } from "src/interceptors/serialize.interceptor";
-import { AuthGuard } from "src/guards/auth.guard";
+import { TokenGuard } from "src/guards/token.guard";
 
 @Controller('users')
 @Serialize(UserDto)
-@UseGuards(AuthGuard)
+@UseGuards(TokenGuard)
 export class UsersController {
     constructor(public userService: UserService, public authService: AuthService) {}
 

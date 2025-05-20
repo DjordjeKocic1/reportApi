@@ -13,8 +13,6 @@ const users_schema_1 = require("./users.schema");
 const users_controller_1 = require("./users.controller");
 const users_service_1 = require("./users.service");
 const auth_service_1 = require("../auth/auth.service");
-const auth_guard_1 = require("../../guards/auth.guard");
-const current_user_interceptor_1 = require("./interceptors/current-user.interceptor");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
@@ -26,9 +24,7 @@ exports.UsersModule = UsersModule = __decorate([
         controllers: [users_controller_1.UsersController],
         providers: [
             users_service_1.UserService,
-            auth_service_1.AuthService,
-            auth_guard_1.AuthGuard,
-            current_user_interceptor_1.CurrentUserInterceptor
+            auth_service_1.AuthService
         ],
     })
 ], UsersModule);

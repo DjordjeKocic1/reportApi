@@ -3,14 +3,13 @@ import {
   ExecutionContext,
   Injectable,
   UnauthorizedException,
-  UnprocessableEntityException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { jwtConstants } from "src/constants/auth";
-import { extractTokenFromHeader } from "./utils/auth.utils";
+import { extractTokenFromHeader } from "./utils/token.utils";
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class TokenGuard implements CanActivate {
     constructor(private jwtService: JwtService) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
 

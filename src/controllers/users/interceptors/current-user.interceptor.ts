@@ -6,7 +6,7 @@ import {
 } from "@nestjs/common";
 import { UserService } from "../users.service";
 import { JwtService } from "@nestjs/jwt";
-import { extractTokenFromHeader } from "src/guards/utils/auth.utils";
+import { extractTokenFromHeader } from "src/guards/utils/token.utils";
 
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {

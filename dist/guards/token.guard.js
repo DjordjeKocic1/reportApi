@@ -9,30 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CurrentUserInterceptor = void 0;
+exports.TokenGuard = void 0;
 const common_1 = require("@nestjs/common");
-const users_service_1 = require("../users.service");
 const jwt_1 = require("@nestjs/jwt");
-const token_utils_1 = require("../../../guards/utils/token.utils");
-let CurrentUserInterceptor = class CurrentUserInterceptor {
-    constructor(userService, jwtService) {
-        this.userService = userService;
+const auth_1 = require("../constants/auth");
+const token_utils_1 = require("./utils/token.utils");
+let TokenGuard = class TokenGuard {
+    constructor(jwtService) {
         this.jwtService = jwtService;
     }
-    async intercept(context, next) {
+    async canActivate(context) {
         const request = context.switchToHttp().getRequest();
         const token = (0, token_utils_1.extractTokenFromHeader)(request);
-        const decode = this.jwtService.decode(token);
-        const user = await this.userService.findOne(decode.username);
-        if (user) {
-            request.currentUser = user;
+        if (!token) {
+            throw new common_1.UnauthorizedException("Token not found");
         }
-        return next.handle();
+        try {
+            await this.jwtService.verifyAsync(token, {
+                secret: auth_1.jwtConstants.secret
+            });
+        }
+        catch (error) {
+            throw new common_1.UnauthorizedException("Invalid token");
+        }
+        return true;
     }
 };
-exports.CurrentUserInterceptor = CurrentUserInterceptor;
-exports.CurrentUserInterceptor = CurrentUserInterceptor = __decorate([
+exports.TokenGuard = TokenGuard;
+exports.TokenGuard = TokenGuard = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [users_service_1.UserService, jwt_1.JwtService])
-], CurrentUserInterceptor);
-//# sourceMappingURL=current-user.interceptor.js.map
+    __metadata("design:paramtypes", [jwt_1.JwtService])
+], TokenGuard);
+//# sourceMappingURL=token.guard.js.map
