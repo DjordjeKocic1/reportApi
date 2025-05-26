@@ -13,7 +13,7 @@ export declare class ReportsController {
     } & {
         __v: number;
     }>;
-    createReport(report: ReportDto): Promise<import("mongoose").Document<unknown, {}, import("./reports.schema").Report> & import("./reports.schema").Report & {
+    createReport(report: ReportDto, userId: string): Promise<import("mongoose").Document<unknown, {}, import("./reports.schema").Report> & import("./reports.schema").Report & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;

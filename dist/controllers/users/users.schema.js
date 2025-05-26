@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersSchema = exports.User = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const mongoose_2 = require("mongoose");
 let User = class User {
 };
 exports.User = User;
@@ -31,10 +30,6 @@ __decorate([
     (0, mongoose_1.Prop)({ type: Number }),
     __metadata("design:type", Number)
 ], User.prototype, "mobile", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ type: [{ type: mongoose_2.default.Schema.Types.ObjectId, ref: 'Report' }] }),
-    __metadata("design:type", Array)
-], User.prototype, "reports", void 0);
 exports.User = User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);

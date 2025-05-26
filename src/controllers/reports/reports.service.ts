@@ -1,16 +1,12 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Report } from "./reports.schema";
 import { ReportDto } from "./dtos/report.dto";
-import { User } from "../users/users.schema";
 
 @Injectable()
 export class ReportsService {
-  constructor(
-    @InjectModel(Report.name) private reports: Model<Report>,
-    @InjectModel(User.name) private user: Model<User>
-  ) {}
+  constructor(@InjectModel(Report.name) private reports: Model<Report>) {}
   async findAll(userId: string) {
     const reports = await this.reports.find({ userId });
     return reports;
@@ -21,13 +17,9 @@ export class ReportsService {
     return report;
   }
 
-  async create(reportPayload: ReportDto) {
+  async create(reportPayload: ReportDto, userId: string) {
+    reportPayload.userId = userId;
     const report = new this.reports(reportPayload);
-    const user = await this.user.findById(reportPayload.userId);
-    if (!user) throw new UnauthorizedException("User not found");
-    user.reports.push(report);
-    await user.save();
-
     return await report.save();
   }
 }

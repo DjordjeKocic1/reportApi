@@ -1,5 +1,6 @@
+
 GET http://localhost:3000/reports
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzYmQxN2EwYTZmZWNkMzlhYyIsInVzZXJuYW1lIjoiS2lrYTEyMyIsImlhdCI6MTc0ODA3OTAwMywiZXhwIjoxNzQ4MTE1MDAzfQ.z3Pc6aN-Qf5g7MbWZyOLzPXH0ga65fmsfvD9wMQt3hQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzYmQxN2EwYTZmZWNkMzlhYyIsInVzZXJuYW1lIjoiS2lrYTEyMyIsImlhdCI6MTc0ODI2ODQyMiwiZXhwIjoxNzQ4MzA0NDIyfQ.sbPvSxIVV5aRKUGYAoeFCH1e35MS-1BqSEFB7fKHbOY
 
 ### Get Report
 GET http://localhost:3000/reports/682c98053568406661eb44c9
@@ -7,10 +8,9 @@ GET http://localhost:3000/reports/682c98053568406661eb44c9
 ### create report
 POST http://localhost:3000/reports
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MDc3MjA4LCJleHAiOjE3NDgxMTMyMDh9.teWBLerZO6BhaQYt4auDmv6xfLG1KA-Fs0Q2Jvgyu0M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MjY4MjYyLCJleHAiOjE3NDgzMDQyNjJ9.VU0lNHfOgokWEFoAIrpezRqqAkANQG9WA9N4VmOKe5A
 
 {
-    "name": "Analize Report from 2022",
-    "description": "Very good report",
-    "userId": "68308b23bd17a0a6fecd39ac"
+    "name": "Analize Report from 2025",
+    "description": "Very good report from Facebook"
 }

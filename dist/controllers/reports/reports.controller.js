@@ -29,8 +29,8 @@ let ReportsController = class ReportsController {
     getReport(id) {
         return this.reportsService.findOne(id);
     }
-    createReport(report) {
-        return this.reportsService.create(report);
+    createReport(report, userId) {
+        return this.reportsService.create(report, userId);
     }
 };
 exports.ReportsController = ReportsController;
@@ -51,8 +51,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [report_dto_1.ReportDto]),
+    __metadata("design:paramtypes", [report_dto_1.ReportDto, String]),
     __metadata("design:returntype", void 0)
 ], ReportsController.prototype, "createReport", null);
 exports.ReportsController = ReportsController = __decorate([
