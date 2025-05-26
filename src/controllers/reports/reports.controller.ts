@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, UseGuards, UseInterceptors } from "@nestjs/common";
 import { ReportsService } from "./reports.service";
 import { ReportDto } from "./dtos/report.dto";
 import { TokenGuard } from "src/guards/token.guard";
@@ -23,6 +23,11 @@ export class ReportsController {
     @Post()
     createReport(@Body() report: ReportDto, @CurrentUser() userId: string) {
         return this.reportsService.create(report, userId);
+    }
+
+    @Delete('/:id')
+    deleteReport(@Param('id') id: string) {
+        return this.reportsService.delete(id);
     }
 
 }

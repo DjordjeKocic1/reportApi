@@ -22,4 +22,8 @@ export class ReportsService {
     const report = new this.reports(reportPayload);
     return await report.save();
   }
+
+  async delete(id: string) {
+    return await this.reports.findByIdAndDelete({ _id: id });
+  }
 }
