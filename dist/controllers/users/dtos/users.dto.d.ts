@@ -1,5 +1,6 @@
+import mongoose from "mongoose";
 export declare class UserDto {
-    _id: string;
+    _id: mongoose.Schema.Types.ObjectId;
     username: string;
     age: number;
     mobile: number;

@@ -15,16 +15,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReportsController = void 0;
 const common_1 = require("@nestjs/common");
 const reports_service_1 = require("./reports.service");
-const serialize_interceptor_1 = require("../../interceptors/serialize.interceptor");
-const reports_schema_1 = require("./reports.schema");
 const report_dto_1 = require("./dtos/report.dto");
 const token_guard_1 = require("../../guards/token.guard");
+const current_user_decorator_1 = require("../users/decorators/current-user.decorator");
+const current_user_interceptor_1 = require("../users/interceptors/current-user.interceptor");
 let ReportsController = class ReportsController {
     constructor(reportsService) {
         this.reportsService = reportsService;
     }
-    getReports() {
-        return this.reportsService.findAll();
+    getReports(userId) {
+        return this.reportsService.findAll(userId);
     }
     getReport(id) {
         return this.reportsService.findOne(id);
@@ -36,8 +36,9 @@ let ReportsController = class ReportsController {
 exports.ReportsController = ReportsController;
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ReportsController.prototype, "getReports", null);
 __decorate([
@@ -51,13 +52,13 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [reports_schema_1.Report]),
+    __metadata("design:paramtypes", [report_dto_1.ReportDto]),
     __metadata("design:returntype", void 0)
 ], ReportsController.prototype, "createReport", null);
 exports.ReportsController = ReportsController = __decorate([
     (0, common_1.Controller)('reports'),
-    (0, serialize_interceptor_1.Serialize)(report_dto_1.ReportDto),
     (0, common_1.UseGuards)(token_guard_1.TokenGuard),
+    (0, common_1.UseInterceptors)(current_user_interceptor_1.CurrentUserInterceptor),
     __metadata("design:paramtypes", [reports_service_1.ReportsService])
 ], ReportsController);
 //# sourceMappingURL=reports.controller.js.map

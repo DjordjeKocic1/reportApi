@@ -12,14 +12,19 @@ const reports_controller_1 = require("./reports.controller");
 const reports_service_1 = require("./reports.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const reports_schema_1 = require("./reports.schema");
+const users_service_1 = require("../users/users.service");
+const users_schema_1 = require("../users/users.schema");
 let ReportsModule = class ReportsModule {
 };
 exports.ReportsModule = ReportsModule;
 exports.ReportsModule = ReportsModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: reports_schema_1.Report.name, schema: reports_schema_1.ReportsSchema }])],
+        imports: [
+            mongoose_1.MongooseModule.forFeature([{ name: reports_schema_1.Report.name, schema: reports_schema_1.ReportsSchema }]),
+            mongoose_1.MongooseModule.forFeature([{ name: users_schema_1.User.name, schema: users_schema_1.UsersSchema }]),
+        ],
         controllers: [reports_controller_1.ReportsController],
-        providers: [reports_service_1.ReportsService],
+        providers: [reports_service_1.ReportsService, users_service_1.UserService],
     })
 ], ReportsModule);
 //# sourceMappingURL=reports.module.js.map

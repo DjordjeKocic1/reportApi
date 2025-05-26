@@ -1,8 +1,13 @@
+### get user
+GET http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MDc3MjA4LCJleHAiOjE3NDgxMTMyMDh9.teWBLerZO6BhaQYt4auDmv6xfLG1KA-Fs0Q2Jvgyu0M
+
 ### update
 PUT http://localhost:3000/users/67d716594aef5ec6a65ed155
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRqb2xlMSIsImlhdCI6MTc0MjE0OTIxOSwiZXhwIjoxNzQyMTg1MjE5fQ.QlspMfnm-MwYR3vQUQTe7dpc1Yol5d8Kpv3N1lxFPAQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MDc3MjA4LCJleHAiOjE3NDgxMTMyMDh9.teWBLerZO6BhaQYt4auDmv6xfLG1KA-Fs0Q2Jvgyu0M
 
 {
-    "mobile": "3asdddas6"
+    "mobile": 123123123
 }

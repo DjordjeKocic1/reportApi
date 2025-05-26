@@ -30,7 +30,7 @@ export class TokenGuard implements CanActivate {
     } catch (error) {
       throw new UnauthorizedException("Invalid token");
     }
-      
+    
     return true;
   }
 }

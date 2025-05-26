@@ -25,7 +25,7 @@ let CurrentUserInterceptor = class CurrentUserInterceptor {
         const decode = this.jwtService.decode(token);
         const user = await this.userService.findOne(decode.username);
         if (user) {
-            request.currentUser = user;
+            request.userId = user._id.toString();
         }
         return next.handle();
     }

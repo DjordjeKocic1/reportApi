@@ -1,5 +1,6 @@
 import { User } from "./users.schema";
 import { Model } from "mongoose";
+import { UserDto } from "./dtos/users.dto";
 export declare class UserService {
     private users;
     constructor(users: Model<User>);
@@ -13,7 +14,7 @@ export declare class UserService {
     } & {
         __v: number;
     }>;
-    update(id: string, user: User): Promise<import("mongoose").Document<unknown, {}, User> & User & {
+    update(id: string, user: UserDto): Promise<import("mongoose").Document<unknown, {}, User> & User & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;

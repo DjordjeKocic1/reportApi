@@ -11,12 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDto = void 0;
 const class_transformer_1 = require("class-transformer");
+const mongoose_1 = require("mongoose");
 class UserDto {
 }
 exports.UserDto = UserDto;
 __decorate([
     (0, class_transformer_1.Expose)(),
-    __metadata("design:type", String)
+    __metadata("design:type", mongoose_1.default.Schema.Types.ObjectId)
 ], UserDto.prototype, "_id", void 0);
 __decorate([
     (0, class_transformer_1.Expose)(),

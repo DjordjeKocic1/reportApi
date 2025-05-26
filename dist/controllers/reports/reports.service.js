@@ -17,12 +17,14 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const reports_schema_1 = require("./reports.schema");
+const users_schema_1 = require("../users/users.schema");
 let ReportsService = class ReportsService {
-    constructor(reports) {
+    constructor(reports, user) {
         this.reports = reports;
+        this.user = user;
     }
-    async findAll() {
-        const reports = await this.reports.find();
+    async findAll(userId) {
+        const reports = await this.reports.find({ userId });
         return reports;
     }
     async findOne(id) {
@@ -31,14 +33,20 @@ let ReportsService = class ReportsService {
     }
     async create(reportPayload) {
         const report = new this.reports(reportPayload);
-        await report.save();
-        return report;
+        const user = await this.user.findById(reportPayload.userId);
+        if (!user)
+            throw new common_1.UnauthorizedException("User not found");
+        user.reports.push(report);
+        await user.save();
+        return await report.save();
     }
 };
 exports.ReportsService = ReportsService;
 exports.ReportsService = ReportsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(reports_schema_1.Report.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __param(1, (0, mongoose_1.InjectModel)(users_schema_1.User.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        mongoose_2.Model])
 ], ReportsService);
 //# sourceMappingURL=reports.service.js.map

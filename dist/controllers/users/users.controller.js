@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
-const users_schema_1 = require("./users.schema");
 const users_dto_1 = require("./dtos/users.dto");
 const auth_service_1 = require("../auth/auth.service");
 const serialize_interceptor_1 = require("../../interceptors/serialize.interceptor");
@@ -35,7 +34,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, users_schema_1.User]),
+    __metadata("design:paramtypes", [String, users_dto_1.UserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "updateUser", null);
 exports.UsersController = UsersController = __decorate([

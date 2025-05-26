@@ -13,7 +13,7 @@ export class UsersController {
     constructor(public userService: UserService, public authService: AuthService) {}
 
     @Put("/:id")
-    updateUser(@Param("id") id: string, @Body() user: User) {
+    updateUser(@Param("id") id: string, @Body() user: UserDto) {
         return this.userService.update(id, user);
     }
 

@@ -3,7 +3,7 @@ POST http://localhost:3000/users/signup
 Content-Type: application/json
 
 {
-    "username": "Djole1",
+    "username": "Kika123",
     "password": "djole1989/"
 }
 

@@ -1,6 +1,9 @@
-import { Expose } from "class-transformer";
+import { Expose, Transform } from "class-transformer";
 
 export class ReportDto {
-    @Expose()
     name: string;
+
+    description: string;
+
+    userId: string;
 }
