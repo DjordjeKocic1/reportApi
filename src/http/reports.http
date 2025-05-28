@@ -3,7 +3,7 @@ GET http://localhost:3000/reports
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzYmQxN2EwYTZmZWNkMzlhYyIsInVzZXJuYW1lIjoiS2lrYTEyMyIsImlhdCI6MTc0ODI2ODQyMiwiZXhwIjoxNzQ4MzA0NDIyfQ.sbPvSxIVV5aRKUGYAoeFCH1e35MS-1BqSEFB7fKHbOY
 
 ### Get Report
-GET http://localhost:3000/reports/682c98053568406661eb44c9
+GET http://localhost:3000/reports/683199bf372bf76ed41e0536
 
 ### create report
 POST http://localhost:3000/reports
@@ -19,3 +19,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5N
 DELETE http://localhost:3000/reports/683474cdfbb0d6ff632bf73c
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MjY4MjYyLCJleHAiOjE3NDgzMDQyNjJ9.VU0lNHfOgokWEFoAIrpezRqqAkANQG9WA9N4VmOKe5A
+
+### update report status
+PATCH  http://localhost:3000/reports/683199bf372bf76ed41e0536/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MjY4MjYyLCJleHAiOjE3NDgzMDQyNjJ9.VU0lNHfOgokWEFoAIrpezRqqAkANQG9WA9N4VmOKe5A
+
+{
+    "status": "pending"
+}

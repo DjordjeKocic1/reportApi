@@ -23,6 +23,12 @@ export class ReportsService {
     return await report.save();
   }
 
+  async update(id: string, payload) {
+    return await this.reports.findOneAndUpdate({ _id: id }, payload, {
+      new: true,
+    });
+  }
+
   async delete(id: string) {
     return await this.reports.findByIdAndDelete({ _id: id });
   }

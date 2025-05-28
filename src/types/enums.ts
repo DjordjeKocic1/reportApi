@@ -3,3 +3,10 @@ export enum ErrorMessages {
     USER_ALREADY_EXISTS = 'User already exists',
     BAD_PASSWORD = 'Bad password'
 }
+
+export enum ReportStatus {
+    PENDING = 'pending',
+    REVIEWING = 'reviewing',
+    RESOLVED = 'resolved',
+    REJECTED = 'rejected'
+}

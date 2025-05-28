@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import mongoose from "mongoose";
-import { User } from "../users/users.schema";
+import { ReportStatus } from "src/types/enums";
 
 @Schema()
 export class Report {
@@ -9,6 +9,9 @@ export class Report {
 
   @Prop()
   description: string;
+
+  @Prop()
+  status: ReportStatus;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   userId: mongoose.Schema.Types.ObjectId;
