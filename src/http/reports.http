@@ -8,7 +8,7 @@ GET http://localhost:3000/reports/683199bf372bf76ed41e0536
 ### create report
 POST http://localhost:3000/reports
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MjY4MjYyLCJleHAiOjE3NDgzMDQyNjJ9.VU0lNHfOgokWEFoAIrpezRqqAkANQG9WA9N4VmOKe5A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzYmQxN2EwYTZmZWNkMzlhYyIsInVzZXJuYW1lIjoiS2lrYTEyMyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ4NDQ2MDIyLCJleHAiOjE3NDg0ODIwMjJ9.jLC2uhPCgqO_2PC-xwLEMf_lGLSa8saP_NoF0nB26iw
 
 {
     "name": "Analize Report from 2025",
@@ -23,8 +23,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5N
 ### update report status
 PATCH  http://localhost:3000/reports/683199bf372bf76ed41e0536/status
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDcxNjU5NGFlZjVlYzZhNjVlZDE1NSIsInVzZXJuYW1lIjoiRGpvbGUxIiwiaWF0IjoxNzQ4MjY4MjYyLCJleHAiOjE3NDgzMDQyNjJ9.VU0lNHfOgokWEFoAIrpezRqqAkANQG9WA9N4VmOKe5A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzYmQxN2EwYTZmZWNkMzlhYyIsInVzZXJuYW1lIjoiS2lrYTEyMyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ4NDQ2MDIyLCJleHAiOjE3NDg0ODIwMjJ9.jLC2uhPCgqO_2PC-xwLEMf_lGLSa8saP_NoF0nB26iw
 
 {
-    "status": "pending"
+    "status": "reviewing"
 }

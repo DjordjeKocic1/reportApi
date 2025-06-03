@@ -10,3 +10,9 @@ export enum ReportStatus {
     RESOLVED = 'resolved',
     REJECTED = 'rejected'
 }
+
+export enum Role {
+  USER = 'user',
+  MODERATOR = 'moderator',
+  ADMIN = 'admin',
+}

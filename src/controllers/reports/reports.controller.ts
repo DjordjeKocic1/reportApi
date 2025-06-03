@@ -5,10 +5,12 @@ import { TokenGuard } from "src/guards/token.guard";
 import { CurrentUser } from "../users/decorators/current-user.decorator";
 import { CurrentUserInterceptor } from "../users/interceptors/current-user.interceptor";
 import { ReportStatusDto } from "./dtos/report-status.dto";
-import { ReportGuard } from "./guards/report.guard";
+import { RolesGuard } from "src/guards/roles.guard";
+import { Roles } from "src/decorators/roles.decorator";
+import { Role } from "src/types/enums";
 
 @Controller('reports')
-@UseGuards(TokenGuard, ReportGuard)
+@UseGuards(TokenGuard, RolesGuard)
 @UseInterceptors(CurrentUserInterceptor)
 export class ReportsController {
     constructor(public reportsService: ReportsService) {}
@@ -28,11 +30,13 @@ export class ReportsController {
     }
 
     @Patch('/:id/status')
+    @Roles(Role.ADMIN)
     updateReportStatus(@Param('id') id: string, @Body() report: ReportStatusDto) {
         return this.reportsService.update(id, report);
     }
 
     @Delete('/:id')
+    @Roles(Role.ADMIN)
     deleteReport(@Param('id') id: string) {
         return this.reportsService.delete(id);
     }

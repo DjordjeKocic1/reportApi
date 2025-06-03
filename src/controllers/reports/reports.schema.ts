@@ -10,7 +10,7 @@ export class Report {
   @Prop()
   description: string;
 
-  @Prop()
+  @Prop({ enum: ReportStatus, default: ReportStatus.PENDING })
   status: ReportStatus;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
