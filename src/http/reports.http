@@ -1,18 +1,15 @@
 
 GET http://localhost:3000/reports
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzYmQxN2EwYTZmZWNkMzlhYyIsInVzZXJuYW1lIjoiS2lrYTEyMyIsImlhdCI6MTc0ODI2ODQyMiwiZXhwIjoxNzQ4MzA0NDIyfQ.sbPvSxIVV5aRKUGYAoeFCH1e35MS-1BqSEFB7fKHbOY
-
-### Get Report
-GET http://localhost:3000/reports/683199bf372bf76ed41e0536
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2YzMDM4NDdjZjc4MGEyMWJjZjAzOCIsInVzZXJuYW1lIjoiS3Jpc3RpbmEiLCJpYXQiOjE3NDg5NzE1ODIsImV4cCI6MTc0OTAwNzU4Mn0.TQ0TjP2DhkNFC5Z4Hf3y8ZhYdn5LFXn9e8JjhtaUp-U
 
 ### create report
 POST http://localhost:3000/reports
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzYmQxN2EwYTZmZWNkMzlhYyIsInVzZXJuYW1lIjoiS2lrYTEyMyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ4NDQ2MDIyLCJleHAiOjE3NDg0ODIwMjJ9.jLC2uhPCgqO_2PC-xwLEMf_lGLSa8saP_NoF0nB26iw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2YzMDM4NDdjZjc4MGEyMWJjZjAzOCIsInVzZXJuYW1lIjoiS3Jpc3RpbmEiLCJpYXQiOjE3NDg5NzE1ODIsImV4cCI6MTc0OTAwNzU4Mn0.TQ0TjP2DhkNFC5Z4Hf3y8ZhYdn5LFXn9e8JjhtaUp-U
 
 {
-    "name": "Analize Report from 2025",
-    "description": "Very good report from Facebook"
+    "name": "Analize Report from 2001",
+    "description": "Repote about animals"
 }
 
 ### delete report

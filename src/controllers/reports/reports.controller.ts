@@ -19,11 +19,6 @@ export class ReportsController {
         return this.reportsService.findAll(userId);
     }
 
-    @Get('/:id')
-    getReport(@Param('id') id: string) {
-        return this.reportsService.findOne(id);
-    }
-    
     @Post()
     createReport(@Body() report: ReportDto, @CurrentUser() userId: string) {
         return this.reportsService.create(report, userId);
