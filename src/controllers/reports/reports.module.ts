@@ -4,7 +4,6 @@ import { ReportsService } from "./reports.service";
 import { MongooseModule } from "@nestjs/mongoose";
 import { Report, ReportsSchema } from "./reports.schema";
 import { UserService } from "../users/users.service";
-import { CurrentUserInterceptor } from "../users/interceptors/current-user.interceptor";
 import { User, UsersSchema } from "../users/users.schema";
 
 @Module({

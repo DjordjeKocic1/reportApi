@@ -6,6 +6,7 @@ import { ReportsModule } from "./controllers/reports/reports.module";
 import { UsersModule } from "./controllers/users/users.module";
 import { AuthModule } from "./controllers/auth/auth.module";
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ReportCommentsModule } from "./controllers/comments/report-comments.module";
 
 
 @Module({
@@ -27,7 +28,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     ReportsModule,
     UsersModule,
-    AuthModule
+    AuthModule,
+    ReportCommentsModule
   ]
 })
 export class AppModule {}
