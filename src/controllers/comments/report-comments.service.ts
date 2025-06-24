@@ -10,13 +10,16 @@ export class ReportCommentsService {
     @InjectModel(ReportComment.name)
     private comments: Model<ReportComment>
   ) {}
-
-  async create(userId: string, reportId:string, commentDto: CommentDto) {
-      const comment = new this.comments({
-        reportId,
-        userId,
-        message: commentDto.message
-      });
-      return await comment.save();
-    }
+  async getComments(reportId: string) {
+    const comments = await this.comments.find({ reportId });
+    return comments;
+  }
+  async createComment(reportId: string, userId: string, commentDto: CommentDto) {
+    const comment = new this.comments({
+      reportId,
+      userId,
+      message: commentDto.message,
+    });
+    return await comment.save();
+  }
 }

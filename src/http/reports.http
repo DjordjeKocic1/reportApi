@@ -27,10 +27,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzA4YjIzY
 }
 
 ### create report comment
-POST  http://localhost:3000/reports/1223/comments
+POST  http://localhost:3000/reports/683f302147cf780a21bcf035/comments
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2YzMDM4NDdjZjc4MGEyMWJjZjAzOCIsInVzZXJuYW1lIjoiS3Jpc3RpbmEiLCJpYXQiOjE3NTAwMTA1MzYsImV4cCI6MTc1MDA0NjUzNn0.faKF1oWvDydVKfroNqj0Py07U1lwaH0Pow9gAvgIwMs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2YzMDM4NDdjZjc4MGEyMWJjZjAzOCIsInVzZXJuYW1lIjoiS3Jpc3RpbmEiLCJpYXQiOjE3NTA3NzQzNTIsImV4cCI6MTc1MDgxMDM1Mn0.xEVgsxm7gyFOgVnOmBB0YuKq_R_m619G6GzJ_rwIijU
 
 {
-    "message": "please change to text from a picture"
+    "message": "change the gif"
 }
+
+### get report comments
+GET  http://localhost:3000/reports/683f302147cf780a21bcf035/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2YzMDM4NDdjZjc4MGEyMWJjZjAzOCIsInVzZXJuYW1lIjoiS3Jpc3RpbmEiLCJpYXQiOjE3NTA3NzQzNTIsImV4cCI6MTc1MDgxMDM1Mn0.xEVgsxm7gyFOgVnOmBB0YuKq_R_m619G6GzJ_rwIijU
